@@ -1,5 +1,6 @@
 ﻿using MVVM_Tutorial.Commands;
 using MVVM_Tutorial.Model;
+using MVVM_Tutorial.Services;
 using MVVM_Tutorial.Stores;
 using System;
 using System.Collections.Generic;
@@ -86,14 +87,14 @@ namespace MVVM_Tutorial.ViewModel
 
         public ICommand CancelCommand { get; }
 
-        public MakeReservationViewModel(Hotel hotel , NavigationStore navigationStore ,Func<ReservationListingViewModel> createReservationListingViewModel)
+        public MakeReservationViewModel(Hotel hotel , NavigationService reservationViewNavigationService)
         {
             _startDate = DateTime.Now;
             _endDate = DateTime.Now.AddDays(1);
 
 
-            SubmitCommand = new MakeReservationCommand(this, hotel);
-            CancelCommand = new NavigateCommand(navigationStore, createReservationListingViewModel);
+            SubmitCommand = new MakeReservationCommand(this, hotel, reservationViewNavigationService);
+            CancelCommand = new NavigateCommand(reservationViewNavigationService);
         }
     }
 }

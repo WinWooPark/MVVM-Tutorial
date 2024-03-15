@@ -41,12 +41,12 @@ namespace MVVM_Tutorial
 
         private MakeReservationViewModel CreateMakeReservationViewModel() 
         {
-            return new MakeReservationViewModel(_hotel, _navigationStore, CreateReservationListingViewModel);
+            return new MakeReservationViewModel(_hotel, new MVVM_Tutorial.Services.NavigationService(_navigationStore, CreateReservationListingViewModel));
         }
 
         private ReservationListingViewModel CreateReservationListingViewModel()
         {
-            return new ReservationListingViewModel(_navigationStore, CreateMakeReservationViewModel);
+            return new ReservationListingViewModel(_hotel,new MVVM_Tutorial.Services.NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 

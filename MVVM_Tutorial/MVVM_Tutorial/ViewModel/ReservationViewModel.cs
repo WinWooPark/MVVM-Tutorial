@@ -12,8 +12,8 @@ namespace MVVM_Tutorial.ViewModel
         private readonly Reservation _reservation;
         public string RoomID => _reservation.RoomID.ToString();
         public string Username => _reservation.Username;
-        public DateTime StartDate => _reservation.StartTime.Date;
-        public DateTime EndDate => _reservation.EndTime.Date;
+        public string StartTime => _reservation.StartTime.Date.ToString("d");
+        public string EndTime => _reservation.EndTime.Date.ToString("d");
 
         public ReservationViewModel(Reservation reservation)
         {

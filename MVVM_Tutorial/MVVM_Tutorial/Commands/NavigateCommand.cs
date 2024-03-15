@@ -18,5 +18,9 @@ namespace MVVM_Tutorial.Commands
             _navigationService.Navigate();
 
         }
+        public NavigateCommand(NavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
     }
 }

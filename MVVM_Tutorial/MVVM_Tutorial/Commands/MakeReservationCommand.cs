@@ -1,5 +1,6 @@
 ﻿using MVVM_Tutorial.Exceptions;
 using MVVM_Tutorial.Model;
+using MVVM_Tutorial.Services;
 using MVVM_Tutorial.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,14 @@ namespace MVVM_Tutorial.Commands
     {
         private readonly MakeReservationViewModel _makeReservationViewModel;
         private readonly Hotel _hotel;
+        private readonly NavigationService _reservationNavigationService;
 
-        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel, Hotel hotel)
+        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel, Hotel hotel , NavigationService reservationNavigationService)
         {
             _makeReservationViewModel = makeReservationViewModel;
             _hotel = hotel;
+            _reservationNavigationService = reservationNavigationService;
+
             _makeReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
